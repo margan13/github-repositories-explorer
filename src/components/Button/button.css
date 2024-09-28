@@ -1,0 +1,7 @@
+.button {
+  @apply relative flex w-fit items-center justify-center whitespace-nowrap border border-transparent disabled:pointer-events-none;
+}
+
+.button-full {
+  @apply w-full;
+}
