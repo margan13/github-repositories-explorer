@@ -6,7 +6,7 @@ export const fetchUserRepos = async (username: string) => {
     `https://api.github.com/users/${username}/repos`,
     {
       headers: {
-        Authorization: `token ${config.GithubToken}`,
+        Authorization: `Bearer ${config.GithubToken}`,
         'X-GitHub-Api-Version': '2022-11-28',
       },
     },

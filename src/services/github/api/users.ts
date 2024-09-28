@@ -8,7 +8,7 @@ export const fetchUsers = async (username) => {
       per_page: 5,
     },
     headers: {
-      Authorization: `token ${config.GithubToken}`,
+      Authorization: `Bearer ${config.GithubToken}`,
       'X-GitHub-Api-Version': '2022-11-28',
     },
   });
