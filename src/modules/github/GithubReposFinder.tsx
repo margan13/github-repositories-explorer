@@ -48,7 +48,7 @@ export const GithubReposFinder: FC<GithubReposFinderProps> = ({
     >
       <SearchInput name="name" disabled={form.formState.isSubmitting} />
 
-      <Form.Submit>Search</Form.Submit>
+      <Form.Submit disabled={form.formState.isSubmitting}>Search</Form.Submit>
     </Form>
   );
 };
