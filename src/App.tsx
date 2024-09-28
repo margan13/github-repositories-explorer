@@ -2,29 +2,29 @@ import React, { useState } from 'react';
 
 import { useGithubUsersQuery } from 'src/services/github/hooks/useGithubUsersQuery';
 import { GithubReposFinder } from 'src/modules/github/GithubReposFinder';
+import { GithubReposResults } from 'src/modules/github/GithubReposResults';
+
+import { Loader } from 'src/components/Loader';
 
 function App() {
   const [username, setUsername] = useState('');
 
-  const { data: users } = useGithubUsersQuery(username);
+  const { data: users, isLoading } = useGithubUsersQuery(username);
 
   return (
-    <>
+    <div className="p-4">
       <GithubReposFinder onSubmit={setUsername} />
 
-      <div>
-        {users?.map((user) => (
-          <div key={user.id} style={{ marginBottom: '50px' }}>
-            <div>{user.login}:</div>
-            <div>
-              {user.repos.map((repo) => (
-                <div key={repo.id}>{repo.name}</div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </>
+      {isLoading && <Loader />}
+
+      {!isLoading && !!users?.length && (
+        <div>
+          <div className="my-4">Showing users for {`"${username}"`}</div>
+
+          <GithubReposResults users={users} />
+        </div>
+      )}
+    </div>
   );
 }
 

@@ -3,3 +3,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    html {
+        @apply scroll-smooth text-base text-black;
+    }
+
+    body {
+        @apply bg-white text-base font-normal;
+    }
+
+    html,
+    body {
+        @apply h-full;
+    }
+}

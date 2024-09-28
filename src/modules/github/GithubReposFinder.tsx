@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z, object } from 'zod';
 
 import { Form } from 'src/components/Form';
-import { SearchInput } from 'src/components/SearchInput';
+import { SearchInput } from 'src/components/Input/SearchInput';
 
 export interface GithubReposFinderFormModel {
   name: string;
