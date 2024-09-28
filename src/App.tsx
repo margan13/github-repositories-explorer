@@ -1,24 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { useGithubUsersQuery } from 'src/services/github/hooks/useGithubUsersQuery';
 
 function App() {
+  const { data: users } = useGithubUsersQuery('margan');
+
+  console.log(users);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {users?.map((user) => (
+        <div key={user.id} style={{ marginBottom: '50px' }}>
+          <div>{user.login}:</div>
+          <div>
+            {user.repos.map((repo) => (
+              <div key={repo.id}>{repo.name}</div>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
